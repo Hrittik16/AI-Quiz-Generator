@@ -5,20 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Quiz Generator</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="navbar">
-        <h1 class="heading">AI Quiz Generator</h1>
-    </div>
-    <div id="body">
-        <div class="userInput">
-            <!-- <label for="textBox">Enter Your Text:</label> -->
-            <textarea name="textBox" id="textBox" ></textarea>
+    <div class="container">
+        <h1>AI Quiz Generator</h1>
+        <div class="api-key-container">
+            <div class="api-key-input-group">
+                <input type="password" id="apiKey" placeholder="Enter your OpenAI API key" />
+                <button id="submitApiKey" class="submit-btn">Submit</button>
+            </div>
         </div>
-        <div class="button">
-            <button id="submit" onClick="submit()">Submit</button>
+        <div class="input-container">
+            <textarea id="textInput" placeholder="Enter your text here..."></textarea>
+            <button id="generateBtn">Generate Quiz</button>
         </div>
+        <div id="quizContainer" class="quiz-container">
+            <!-- Quiz will be displayed here -->
+        </div>
+        <div id="summaryContainer" class="summary-container hidden">
+            <h2>Quiz Summary</h2>
+            <div class="chart-container">
+                <canvas id="quizChart"></canvas>
+            </div>
+            <div class="summary-details">
+                <div class="summary-item">
+                    <span class="label">Total Questions:</span>
+                    <span class="value" id="totalQuestions">0</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">Correct Answers:</span>
+                    <span class="value" id="correctAnswers">0</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">Score:</span>
+                    <span class="value" id="quizScore">0%</span>
+                </div>
+            </div>
+        </div>
+        <button id="finishBtn" class="finish-btn hidden">Finish Quiz</button>
     </div>
-    <script src="script.js"></script>
+    <script src="app.js"></script>
 </body>
-</html>
+</html> 
